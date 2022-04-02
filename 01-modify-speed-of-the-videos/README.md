@@ -1,4 +1,10 @@
 
+Create a folder:
+
+```sh
+mkdir ~/.shell-functions
+```
+
 Run for bash:
 
 ```sh
