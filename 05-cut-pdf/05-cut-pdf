@@ -1,0 +1,11 @@
+#!/bin/sh
+
+cut-pdf() {
+    file=$(echo $1 | cut -d '.' -f1)
+    if [ -z $3 ]; then
+        pdftk $1 cat $2-$2 output $file\-$2.pdf
+    else
+        pdftk $1 cat $2-$3 output $file\-$2-$3.pdf
+    fi
+}
+

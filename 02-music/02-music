@@ -1,0 +1,15 @@
+#!/bin/sh
+
+music() {
+    
+    if [ -z $1 ]; then
+        if pgrep -x "mpd" >/dev/null; then
+            ncmpcpp
+        else
+            mpd; ncmpcpp
+        fi
+    elif [ $1 = "d" ]; then
+        killall mpd
+    fi
+}
+

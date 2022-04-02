@@ -1,0 +1,8 @@
+#!/bin/sh
+
+youm() {
+    sudo sed -E '/^([^#].*)?youtube/ s/^/#/' -i /etc/hosts
+    rm $HOME/.config/mps-youtube/cache*; mpsyt
+    sudo sed -E '/^([#].*)?youtube/ s/^#//' -i /etc/hosts
+}
+

@@ -1,0 +1,37 @@
+#!/bin/sh
+
+modificar_tudo() {
+    
+    export place='/tmp/arquivo_temporario'
+
+    if [ -z $3 ]; then
+        if [ $2 = 'mp4' ]; then
+            format='video'
+        elif [ $2 = 'mp3' ]; then
+            format='music'
+        fi
+    else
+        format=$3
+    fi
+
+
+    for file in $1/*; do
+        if [ $(echo $2 | rev) = $(echo $file | rev | cut -d '.' -f1) ]; then
+            echo $file >> $place
+        else
+            touch $place
+        fi
+    done
+    
+    if [ $(cat $place | wc -l) != 0 ]; then
+        for i in {1..$(cat $place | wc -l)}; do
+            mv "$(head -n $i $place | tail -1)" $format\_$i\.$2
+        done
+        echo "\033[32mModificação realizada com sucesso.\033[m"
+    else
+        echo "\033[31mNenhum arquivo com o formato $2 encontrado.\033[m"
+    fi
+
+    rm $place
+}
+

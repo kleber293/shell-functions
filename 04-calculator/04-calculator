@@ -1,0 +1,26 @@
+#!/bin/sh
+
+calculator() {
+    
+    value=$1
+    
+    while [ true ]; do     
+        for i in {1..10}; do
+            echo -n "\033[36m$value x $i = "; echo "$value*$i" | bc
+        done
+        
+        while [ true ]; do
+            echo -n "\033[32mDo you want to make another query?[y/n] \033[m"; read mc
+
+            if [ $mc = 'y' ] || [ $mc = 'n' ]; then
+                break
+            fi
+        done
+
+        if [ $mc = 'y' ]; then
+            echo -n "\033[32mEnter another value: \033[m"; read value 
+        elif [ $mc = 'n' ]; then
+            break
+        fi
+    done
+}

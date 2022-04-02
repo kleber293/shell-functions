@@ -1,0 +1,6 @@
+#!/bin/sh
+
+yt-dlp-m() {
+    yt-dlp -f 'ba' -x --audio-format mp3 $1  -o '%(title)s [%(id)s].%(ext)s'
+}
+

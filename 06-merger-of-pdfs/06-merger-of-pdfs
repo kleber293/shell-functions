@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# function: Merger multiple PDFs
+# author: Clebson Marques 
+
+merger-pdf() {
+    file=$(echo $1 | cut -d '.' -f1)
+    export filec='/tmp/files_converts'; mkdir $filec
+    
+    for i in $@; do
+        if [ $(file -b --extension $i) = pdf ]; then
+            cp $i $filec/.
+        else
+            convert $i $filec/$(echo $i | cut -d '.' -f1).pdf
+        fi
+        pdftk $filec/* cat output $(echo $1 | cut -d '.' -f1)\-merger\-$#.pdf
+    done
+    rm -r $filec
+}
+

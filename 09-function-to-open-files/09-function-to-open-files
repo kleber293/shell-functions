@@ -1,0 +1,25 @@
+#!/bin/sh
+
+open() {
+    if [ -f $1 ]; then
+        case $1 in
+            *.mp4)      vlc $1              ;;
+            *.mp3)      mpv $1              ;;
+            *.png)      eog $1              ;;
+            *.jpeg)     eog $1              ;;
+            *.pdf)      okular $1           ;;
+            *.jpg)      eog $1              ;;
+            *.svg)      inkscape $1         ;;
+            *.docx)     com.wps.Office $1   ;;
+            *.xcf)      gimp $1             ;;
+            *.xls)      com.wps.Office $1   ;;
+            *.xlsx)     com.wps.Office $1   ;;
+            *.doc)      com.wps.Office $1   ;;
+            *.eps)      okular $1           ;;
+            *)          echo "'$1' cannot be open via open()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
