@@ -1,8 +1,15 @@
 #!/bin/sh
 
-youm() {
-    sudo sed -E '/^([^#].*)?youtube/ s/^/#/' -i /etc/hosts
-    rm $HOME/.config/mps-youtube/cache*; mpsyt
+youm() {   
+    sudo sed -E '/^([^#].*)?youtube/ s/^/#/' -i /etc/hosts &&
+    rm $HOME/.config/mps-youtube/cache* &&
+    if [ -z $1 ]; then
+        mpsyt
+    elif [ $1 = p ]; then
+        mpsyt play $2
+    elif [ $1 = m ]; then
+        mpsyt /$2 
+    fi &&
     sudo sed -E '/^([#].*)?youtube/ s/^#//' -i /etc/hosts
 }
 
