@@ -4,6 +4,7 @@
 # author: Clebson Marques 
 
 merger-pdf() {
+
     file=$(echo $1 | cut -d '.' -f1)
     export filec='/tmp/files_converts'; mkdir $filec
     

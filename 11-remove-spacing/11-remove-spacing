@@ -1,0 +1,11 @@
+#!/bin/sh/
+
+# function: For remove spacing
+# author: Clebson Marques
+
+remove-spacing() {
+    for file in $@; do
+        mv -- "$file" "${file// /-}"
+    done
+}
+
