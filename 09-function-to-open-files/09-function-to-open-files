@@ -4,6 +4,7 @@ open() {
     if [ -f $1 ]; then
         case $1 in
             *.mp4)      vlc $1              ;;
+            *.dav)      vlc $1              ;;
             *.mp3)      mpv $1              ;;
             *.png)      eog $1              ;;
             *.jpeg)     eog $1              ;;

@@ -1,0 +1,20 @@
+#!/bin/sh/
+
+# Function for convert files to mp4
+# Name of creator: Clebson Marques.
+
+convert-mp4() {
+
+   mkdir folder-mp4
+
+   for file in *; do
+        case $file in
+            *.mp4)  cp "$file" "folder-mp4/$file"                       ;;
+            *.avi)  ffmpeg -i "$file" folder-mp4/"${file%.avi}.mp4"     ;;
+            *.webm) ffmpeg -i "$file" folder-mp4/"${file%.webm}.mp4"    ;;
+            *.dav)  ffmpeg -i "$file" folfer-mp4/"${file%.dav}.mp4"     ;;
+            *)      echo "'$1' cannot be open via open()"               ;;
+        esac
+    done
+}
+
