@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Fuctions for crate plans of class
+# Name to creator: Clebson Marques
+
+planos() {
+    export aqui="$HOME/Documents/EEMTI_MJGFG/Planos-de-Aulas"    
+    export aqui1="$aqui/01-Modelos-Docx/Modelos-Funcao"
+    export aqui2="$aqui/03-Planos-Feitos"
+    
+    if [ -z $2 ]; then
+        
+        mkdir "$aqui2/$1"
+
+        cp "$aqui1/Plano-Semanal-Eletivas.docx" "$aqui2/$1/$1-Plano-Semanal-Eletiva.docx"
+        cp "$aqui1/Plano-Semanal-Fisica.docx" "$aqui2/$1/$1-Plano-Semanal-Fisica.docx"
+        cp "$aqui1/Plano-Semanal-F-Cidada.docx" "$aqui2/$1/$1-Plano-Semanal-F-Cidada.docx"
+
+        cd "$aqui2/$1"
+    
+        com.wps.Office $1-Plano-Semanal-*
+
+        cd ~
+    elif [ $2 = "e" ]; then
+
+        cd "$aqui2/$1"
+        
+        com.wps.Office $1-Plano-Semanal-*
+        
+        cd ~
+    fi
+}
+
