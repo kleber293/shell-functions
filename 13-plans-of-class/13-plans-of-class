@@ -1,10 +1,10 @@
 #!/bin/sh
 
-# Fuctions for crate plans of class
+# Fuction to create plans of class
 # Name to creator: Clebson Marques
 
 planos() {
-    export aqui="$HOME/Documents/EEMTI_MJGFG/Planos-de-Aulas"    
+    export aqui="$HOME/Documents/04-EEMTI_MJGFG/Planos-de-Aulas"    
     export aqui1="$aqui/01-Modelos-Docx/Modelos-Funcao"
     export aqui2="$aqui/03-Planos-Feitos"
     

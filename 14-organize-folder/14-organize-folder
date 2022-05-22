@@ -1,0 +1,59 @@
+#!/bin/sh
+
+# Function to organize files in folders
+# Name to creator: Clebson Marques
+
+
+organize() {
+    ft() {
+        if [ $1 = "P" ]; then
+            export variable='Pictures'
+        elif [ $1 = "D" ]; then
+            export variable='Documents'
+        elif [ $1 = "V" ]; then
+            export variable='Videos'
+        elif [ $1 = "M" ]; then
+            export variable='Music'
+        fi
+        
+        for file in $@; do
+            if [[ ! $file = $1 && -f "$home/Downloads/*.$file" ]]; then
+                mv $home/Downloads/*.$file $home/$variable/.
+            fi
+        done
+    }
+
+    ftt() {
+        # Picture
+        ft "P" "png" "jpeg" "jpg" "xcf"
+        # Documents
+        ft "D" "pdf" "doc" "docx" "pptx"
+        # Videos
+        ft "V" "mp4" "dav" "mkv" "avi"
+        # Music
+        ft "M" "mp3"
+    }
+
+    export exter='/mnt/manjaro-cm/meus-documentos'
+    export home='/home/manjaro-cm'
+
+    if [ -z $1 ]; then
+    
+        ftt
+    
+    elif [ $1 = "a" ]; then
+        
+        ftt
+        
+        for folders ffolders in 'Documents' 'Documentos' 'Pictures' 'Imagens' 'Music' 'Musicas' 'Videos' 'Videos'; do 
+            if [ ! -z "$(ls -A $home/$folders)" ]; then
+                for file in $home/$folders/*; do
+                    if [ ! -d $file ]; then
+                        mv $file $exter/$ffolders/.
+                    fi
+                done
+            fi
+        done
+    fi
+}
+
